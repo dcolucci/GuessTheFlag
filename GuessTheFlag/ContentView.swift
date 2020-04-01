@@ -1,3 +1,4 @@
+// progress: https://www.hackingwithswift.com/books/ios-swiftui/buttons-and-images
 //
 //  ContentView.swift
 //  GuessTheFlag
@@ -10,10 +11,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            RadialGradient(gradient: Gradient(colors: [.purple, .yellow, .white]), center: .center, startRadius: 50, endRadius: 300)
-            AngularGradient(gradient: Gradient(colors: [.purple, .yellow, .white, .purple]), center: .center)
-        }.edgesIgnoringSafeArea(.all)
+        Button(action: {
+            print("button was tapped")
+        }) {
+            HStack(spacing: 10) {
+                Image(systemName: "pencil")
+                Text("Edit")
+            }
+        }
     }
 }
 
