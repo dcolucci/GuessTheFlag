@@ -10,7 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            RadialGradient(gradient: Gradient(colors: [.purple, .yellow, .white]), center: .center, startRadius: 50, endRadius: 300)
+            AngularGradient(gradient: Gradient(colors: [.purple, .yellow, .white, .purple]), center: .center)
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
