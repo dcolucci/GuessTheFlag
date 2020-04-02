@@ -1,4 +1,4 @@
-// progress: https://www.hackingwithswift.com/books/ios-swiftui/buttons-and-images
+// progress: https://www.hackingwithswift.com/books/ios-swiftui/showing-alert-messages
 //
 //  ContentView.swift
 //  GuessTheFlag
@@ -10,14 +10,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingAlert = false
+
     var body: some View {
-        Button(action: {
-            print("button was tapped")
-        }) {
-            HStack(spacing: 10) {
-                Image(systemName: "pencil")
-                Text("Edit")
-            }
+        Button("Show Alert") {
+            self.showingAlert = true
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("myAlert"), message: Text("This is some sort of alert"), dismissButton: .default(Text("Ok")))
         }
     }
 }
