@@ -22,23 +22,22 @@ struct ContentView: View {
             }
             VStack {
                 Text("Tap the flag of")
-                Text(countries[correctAnswer])
+                Text(countries[correctAnswer]).font(.largeTitle).fontWeight(.black)
             }
 
             ForEach(0 ..< 3) { number in
                 Button(action: {
                     self.flagTapped(number)
                 }) {
-                    HStack(spacing: 60) {
-                        Spacer()
-                        ZStack {
-                            Color.init(white: 0.90)
-                                .cornerRadius(10)
-                            Image(self.countries[number]).renderingMode(.original)
-                                .offset(y: 15)
-                                .padding(.bottom, 30)
-                        }
-                        Spacer()
+                    ZStack {
+                        Color.init(white: 0.90)
+                        Image(self.countries[number])
+                            .renderingMode(.original)
+                            .offset(y: 15)
+                            .padding(.bottom, 30)
+                            .clipShape(Capsule())
+                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+                            .shadow(color: .black, radius: 2)
                     }
                 }
             }
