@@ -1,4 +1,4 @@
-// progress: https://www.hackingwithswift.com/books/ios-swiftui/showing-the-players-score-with-an-alert
+// progress: https://www.hackingwithswift.com/books/ios-swiftui/guess-the-flag-wrap-up
 //
 //  ContentView.swift
 //  GuessTheFlag
