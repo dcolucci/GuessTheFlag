@@ -14,15 +14,18 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var showingScore = false
     @State private var scoreTitle = ""
+    @State private var score = 0
 
     var body: some View {
         VStack(spacing: 30) {
-            ForEach(0 ..< 5) { number in
+            ForEach(0 ..< 4) { number in
                 Spacer()
             }
             VStack {
                 Text("Tap the flag of")
-                Text(countries[correctAnswer]).font(.largeTitle).fontWeight(.black)
+                Text(countries[correctAnswer])
+                    .font(.largeTitle)
+                    .fontWeight(.black)
             }
 
             ForEach(0 ..< 3) { number in
@@ -43,12 +46,14 @@ struct ContentView: View {
                     }
                 }
             }
-            ForEach(0 ..< 5) { number in
+            Text("Current score: \(score)")
+                .font(.title)
+            ForEach(0 ..< 4) { number in
                 Spacer()
             }
         }
         .alert(isPresented: $showingScore) {
-            Alert(title: Text(scoreTitle), message: Text("Your score is ???"), dismissButton: .default(Text("Continue")) {
+            Alert(title: Text(scoreTitle), message: Text("Your score is \(score)"), dismissButton: .default(Text("Continue")) {
                 self.askQuestion()
             })
         }
@@ -57,8 +62,9 @@ struct ContentView: View {
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
             scoreTitle = "Correct"
+            score += 1
         } else {
-            scoreTitle = "Wrong"
+            scoreTitle = "Wrong! That's the flag of \(countries[number])"
         }
 
         showingScore = true
