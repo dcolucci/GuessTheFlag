@@ -29,15 +29,17 @@ struct ContentView: View {
                 Button(action: {
                     self.flagTapped(number)
                 }) {
-                    ZStack {
-                        Color.init(white: 0.90)
-                        Image(self.countries[number])
-                            .renderingMode(.original)
-                            .offset(y: 15)
-                            .padding(.bottom, 30)
-                            .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
-                            .shadow(color: .black, radius: 2)
+                    HStack(spacing: 60) {
+                        Spacer()
+                        ZStack {
+                            Color.init(white: 0.90)
+                                .cornerRadius(10)
+                            Image(self.countries[number])
+                                .renderingMode(.original)
+                                .offset(y: 15)
+                                .padding(.bottom, 30)
+                        }
+                        Spacer()
                     }
                 }
             }
