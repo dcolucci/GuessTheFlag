@@ -9,6 +9,21 @@
 
 import SwiftUI
 
+struct FlagButton: View {
+    var image: Image
+
+    var body: some View {
+        ZStack {
+            Color.init(white: 0.90)
+                .cornerRadius(10)
+            image
+                .renderingMode(.original)
+                .offset(y: 15)
+                .padding(.bottom, 30)
+        }
+    }
+}
+
 struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
@@ -34,14 +49,7 @@ struct ContentView: View {
                 }) {
                     HStack(spacing: 60) {
                         Spacer()
-                        ZStack {
-                            Color.init(white: 0.90)
-                                .cornerRadius(10)
-                            Image(self.countries[number])
-                                .renderingMode(.original)
-                                .offset(y: 15)
-                                .padding(.bottom, 30)
-                        }
+                        FlagButton(image: Image(self.countries[number]))
                         Spacer()
                     }
                 }
